@@ -823,50 +823,57 @@ foreach($habitos as $h): ?>
 </div>
 <?php endforeach; ?>
 
-<h2>🎁 Recompensas desbloqueadas</h2>
+<h2>🎁 Recompensas </h2>
 <div class="recompensas-grid">
 
 <?php
+// PUNTOS REDUCIDOS - Más fáciles de conseguir
 $recompensas = [
     [
-        "pts"=>30, 
+        "pts"=>10,   // ANTES: 30
         "titulo"=>"Smoothie verde energético", 
-        "desc"=>"Batido de espinacas, piña y jengibre - ¡Energía natural!",
+        "desc_bloqueado"=>"🔒 ¡Desbloquea esta recompensa para ver la receta!",
+        "receta_completa"=>"✨ RECETA DESBLOQUEADA ✨<br><br>🍹 Smoothie Verde Energético:<br>• 1 taza de espinacas frescas<br>• 1/2 taza de piña<br>• 1 trozo pequeño de jengibre<br>• 1/2 taza de agua de coco<br>• Licuar todo y disfrutar 🥤",
         "emoji"=>"🥤",
         "color"=>"#c8e6c9"
     ],
     [
-        "pts"=>60, 
+        "pts"=>25,   // ANTES: 60
         "titulo"=>"Snack saludable", 
-        "desc"=>"Manzana con crema de cacahuate y canela",
+        "desc_bloqueado"=>"🔒 ¡Desbloquea esta recompensa para ver la receta!",
+        "receta_completa"=>"✨ RECETA DESBLOQUEADA ✨<br><br>🍎 Manzana Fitness:<br>• 1 manzana verde<br>• 2 cucharadas de crema de cacahuate<br>• 1 pizca de canela<br>• Corta la manzana en gajos y untala con crema de cacahuate 🍎",
         "emoji"=>"🍎",
         "color"=>"#ffccbc"
     ],
     [
-        "pts"=>100, 
+        "pts"=>50,   // ANTES: 100
         "titulo"=>"Rutina especial cardio", 
-        "desc"=>"Cardio Fitly de 10 min - Quema calorías extra",
+        "desc_bloqueado"=>"🔒 ¡Desbloquea esta recompensa para ver la rutina!",
+        "receta_completa"=>"✨ RUTINA DESBLOQUEADA ✨<br><br>🔥 Cardio Fitly 10 min:<br>• 1 min saltando cuerda<br>• 1 min skipping<br>• 1 min sentadillas<br>• Repetir 3 veces 💪",
         "emoji"=>"🔥",
         "color"=>"#ffab91"
     ],
     [
-        "pts"=>150, 
+        "pts"=>80,   // ANTES: 150
         "titulo"=>"Desayuno fitness", 
-        "desc"=>"Avena con proteína y frutos rojos",
+        "desc_bloqueado"=>"🔒 ¡Desbloquea esta recompensa para ver la receta!",
+        "receta_completa"=>"✨ RECETA DESBLOQUEADA ✨<br><br>🥣 Avena Proteica:<br>• 1/2 taza de avena<br>• 1 scoop de proteína (vainilla)<br>• 1/2 taza de frutos rojos<br>• 1 cucharada de miel 🍯",
         "emoji"=>"🥣",
         "color"=>"#b39ddb"
     ],
     [
-        "pts"=>200, 
+        "pts"=>120,  // ANTES: 200
         "titulo"=>"Playlist motivacional", 
-        "desc"=>"Lista de canciones para entrenar con ritmo",
+        "desc_bloqueado"=>"🔒 ¡Desbloquea esta recompensa para ver las canciones!",
+        "receta_completa"=>"✨ PLAYLIST DESBLOQUEADA ✨<br><br>🎵 Top canciones para entrenar:<br>• Eye of the Tiger<br>• Can't Hold Us<br>• Stronger<br>• Till I Collapse<br>• Lose Yourself 🎧",
         "emoji"=>"🎵",
         "color"=>"#80cbc4"
     ],
     [
-        "pts"=>300, 
+        "pts"=>180,  // ANTES: 300
         "titulo"=>"Plancha challenge", 
-        "desc"=>"Rutina de 5 min de plancha abdominal",
+        "desc_bloqueado"=>"🔒 ¡Desbloquea esta recompensa para ver el reto!",
+        "receta_completa"=>"✨ RETO DESBLOQUEADO ✨<br><br>💪 Plancha Challenge 5 min:<br>• 30 seg plancha normal<br>• 30 seg plancha lateral (derecha)<br>• 30 seg plancha lateral (izquierda)<br>• Descanso 15 seg<br>• Repetir 4 veces 🔥",
         "emoji"=>"💪",
         "color"=>"#ff8a65"
     ]
@@ -883,8 +890,20 @@ foreach($recompensas as $r):
     </div>
     <div class="recompensa-info">
         <h4><?= $r['titulo'] ?></h4>
-        <p><?= $r['desc'] ?></p>
+        
+        <!-- SORPRESA: Solo se ve la descripción cuando está desbloqueada -->
+        <?php if($desbloqueada): ?>
+            <p style="margin: 0; color: var(--verde-claro); font-size: 13px;">
+                <?= $r['receta_completa'] ?>
+            </p>
+        <?php else: ?>
+            <p style="margin: 0; color: #999; font-size: 13px; font-style: italic;">
+                <?= $r['desc_bloqueado'] ?>
+            </p>
+        <?php endif; ?>
+        
         <span class="recompensa-puntos">🎯 <?= $r['pts'] ?> pts</span>
+        
         <?php if(!$desbloqueada): ?>
             <p style="font-size: 11px; color: #999; margin-top: 8px;">
                 ⭐ Te faltan <?= $r['pts'] - $puntosTotales ?> puntos
@@ -901,10 +920,11 @@ foreach($recompensas as $r):
 
 </div>
 
-<!-- Mensaje de motivación -->
-<?php if($puntosTotales < 30): ?>
+<!-- Mensaje de motivación (actualizado con los nuevos puntos) -->
+<?php if($puntosTotales < 10): ?>
     <div style="text-align: center; padding: 30px; background: var(--gris-suave); border-radius: 20px; margin-top: 20px; border: 1px solid var(--verde-menta);">
         🌟 <strong>¡Sigue así!</strong> Completa hábitos diarios para desbloquear recompensas.
+        <br><small>¡La primera recompensa solo necesita 10 puntos!</small>
     </div>
 <?php endif; ?>
 
