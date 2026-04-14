@@ -1,0 +1,360 @@
+/* ===============================
+   DASHBOARD FITLY
+=============================== */
+
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar-fitly {
+    width: 240px;
+    background: linear-gradient(180deg, #1f7a39, #38b000);
+    color: white;
+    padding: 25px;
+    border-radius: 0 20px 20px 0;
+}
+
+.sidebar-fitly h2 {
+    margin-bottom: 30px;
+}
+
+.sidebar-fitly a {
+    display: block;
+    margin: 15px 0;
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: .2s;
+}
+
+.sidebar-fitly a:hover {
+    color: #ffe066;
+}
+
+/* CONTENIDO */
+.main-fitly {
+    flex: 1;
+    padding: 30px;
+}
+
+/* BIENVENIDA */
+.bienvenida-fitly {
+    font-size: 32px;
+    font-weight: 800;
+    color: #204d27;
+    margin-bottom: 20px;
+}
+
+/* TARJETAS */
+.cards-fitly {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card-fitly {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    transition: .3s;
+}
+
+.card-fitly:hover {
+    transform: translateY(-5px);
+}
+
+/* IMC */
+.imc-input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+/* BOTÓN */
+.btn-fitly {
+    background: #38b000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.btn-fitly:hover {
+    background: #2a7a00;
+}
+
+/* FRASE */
+.frase-dia {
+    font-style: italic;
+    color: #3f004b;
+    margin-top: 10px;
+}
+
+/* RACHA */
+.racha-box {
+    text-align: center;
+}
+
+.racha-num {
+    font-size: 40px;
+    font-weight: bold;
+    color: #38b000;
+}
+
+/* LOGROS */
+.logros {
+    display: flex;
+    gap: 10px;
+}
+
+.logro {
+    padding: 10px;
+    border-radius: 10px;
+    background: #eee;
+}
+
+.logro.activo {
+    background: #ffe066;
+}
+
+/* GRAFICAS SIMPLES */
+.barra {
+    height: 10px;
+    background: #ccc;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.barra-progreso {
+    height: 100%;
+    background: #38b000;
+    border-radius: 10px;
+}
+
+.estado-imc {
+    font-weight: bold;
+    margin-top: 5px;
+    color: #4A4A4A;
+}
+
+.historial-list li {
+    background: #f2f2f2;
+    padding: 8px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+    list-style: none;
+}
+
+/* METAS PERSONALES */ 
+
+.card-progreso {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0px 3px 12px rgba(0,0,0,0.12);
+    margin-bottom: 25px;
+}
+
+.card-progreso h3 {
+    color: #636B2F;
+    margin-bottom: 15px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+#nuevaMeta {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.btn-add {
+    background: #636B2F;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.meta-item {
+    padding: 12px;
+    background: #f7f9f2;
+    border-left: 5px solid #636B2F;
+    margin-bottom: 12px;
+    border-radius: 10px;
+}
+
+.meta-titulo {
+    font-weight: bold;
+    color: #333;
+}
+
+.meta-actions button {
+    margin-right: 10px;
+    padding: 6px 9px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit { background: #C76E00; color: white; }
+.btn-delete { background: #614051; color: white; }
+.btn-complete { background: #38b000; color: white; }
+
+.progress-box {
+    margin: 8px 0;
+}
+
+.progress-bar {
+    height: 9px;
+    background: #ddd;
+    border-radius: 10px;
+}
+
+.progress-bar-fill {
+    height: 9px;
+    background: #38b000;
+    border-radius: 10px;
+}
+
+.habito {
+    display: flex;
+    justify-content: space-between;
+    background: #edfbea;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.habito button {
+    background: #38b000;
+    padding: 6px 9px;
+    border-radius: 6px;
+    border: none;
+    color: white;
+}
+
+/* =========================
+   METAS FITLY PRO
+========================= */
+
+.metas-card, .habitos-card{
+    margin-bottom:20px;
+}
+
+.input-row{
+    display:flex;
+    gap:10px;
+    margin-bottom:15px;
+}
+
+.input-row input{
+    flex:1;
+    padding:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+.btn-add{
+    background:#38b000;
+    color:white;
+    border:none;
+    padding:10px 15px;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+/* META ITEM */
+.meta-item{
+    background: linear-gradient(145deg,#ffffff,#e8f5e9);
+    border-radius:15px;
+    padding:12px;
+    margin-bottom:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+.meta-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.meta-titulo{
+    font-weight:bold;
+    color:#204d27;
+}
+
+.meta-actions button{
+    margin-left:5px;
+    border:none;
+    padding:5px 8px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* BARRA */
+.meta-bar{
+    margin-top:8px;
+    height:8px;
+    background:#ddd;
+    border-radius:10px;
+}
+
+.meta-fill{
+    height:8px;
+    background:linear-gradient(90deg,#38b000,#636B2F,#C76E00);
+    border-radius:10px;
+}
+
+/* COMPLETADA */
+.meta-done{
+    opacity:0.6;
+    text-decoration:line-through;
+}
+
+/* =========================
+   HABITOS
+========================= */
+
+.habito{
+    background:#f5fff5;
+    padding:10px;
+    border-radius:12px;
+    margin-bottom:10px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.habito button{
+    background:#38b000;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* PUNTOS */
+.puntos-box{
+    background:#61405110;
+    padding:10px;
+    border-radius:12px;
+    text-align:center;
+    font-weight:bold;
+    color:#614051;
+    margin-bottom:10px;
+}

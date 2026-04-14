@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Restablecer contraseña - FITLY</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<section class="auth-container">
+    <h2>Restablecer contraseña</h2>
+
+    <form action="procesar_reset.php" method="POST">
+
+        <input type="hidden" name="correo" id="correo">
+
+        <input type="text" name="code" placeholder="Código recibido" required>
+        <input type="password" name="password" placeholder="Nueva contraseña" required>
+
+        <button type="submit" class="btn">Cambiar contraseña</button>
+    </form>
+
+</section>
+
+<script>
+// Tomar correo desde la URL automáticamente
+const params = new URLSearchParams(window.location.search);
+document.getElementById("correo").value = params.get("email");
+</script>
+
+</body>
+</html>

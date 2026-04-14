@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Historial IMC - FITLY</title>
+<link rel="stylesheet" href="estilos2.css">
+
+<!-- Gráfica con Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<header>
+    <h1>FITLY</h1>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="imc.html">Calcular IMC</a>
+        <a href="historial_imc.html">Historial</a>
+    </nav>
+</header>
+
+<section class="historial-section">
+    <h2>📊 Historial de IMC</h2>
+
+    <!-- Tarjeta del último IMC -->
+    <div id="ultimoIMC" class="card-imc"></div>
+
+    <!-- Gráfica -->
+    <canvas id="graficaIMC" style="max-width: 600px; margin: auto;"></canvas>
+
+    <!-- Tabla -->
+    <h3>Registros guardados</h3>
+    <table class="tabla-imc">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Peso (kg)</th>
+                <th>Altura (m)</th>
+                <th>IMC</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody id="tablaIMC"></tbody>
+    </table>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
