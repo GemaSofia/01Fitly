@@ -22,7 +22,7 @@ document.getElementById("formIMC")?.addEventListener("submit", function(e){
 
 // ===============================
 // HISTORIAL IMC
-// ===============================
+// ====================================
 
 if (window.location.pathname.includes("historial_imc.html")) {
     fetch("php/get_historial_imc.php")
