@@ -414,51 +414,79 @@ canvas {
 <div class="card-progreso">
     <h3>💡 Estado</h3>
 
-    <div class="mensaje">
-    <?php
-    // Determinar el IMC más reciente (último valor)
-    $imc_actual = !empty($valores) ? end($valores) : null;
+    <div class="mensaje" style="text-align: left; padding: 20px;">
+        <?php
+        // Determinar el IMC más reciente (último valor)
+        $imc_actual = !empty($valores) ? end($valores) : null;
 
-    if ($imc_actual !== null) {
-        // Determinar estado del IMC actual
-        if ($imc_actual < 18.5) {
-            $icono = "⚠️";
-            $estado_texto = "Bajo peso";
-            $recomendacion = "Te sugerimos aumentar tu ingesta calórica de forma saludable. Visita la sección de 🥗 Nutrición para ver recomendaciones de alimentos que te ayudarán a subir de peso de manera balanceada.";
-            $color = "#ffa726";
-        } elseif ($imc_actual < 24.9) {
-            $icono = "✅";
-            $estado_texto = "Peso normal";
-            $recomendacion = "¡Felicidades! Tu IMC está en el rango saludable. Sigue manteniendo una alimentación balanceada y tus hábitos positivos. En la sección de 🥗 Nutrición encontrarás tips para mantenerte así.";
-            $color = "#7cb518";
-        } elseif ($imc_actual < 29.9) {
-            $icono = "🟡";
-            $estado_texto = "Sobrepeso";
-            $recomendacion = "Te recomendamos reducir el consumo de azúcares y grasas saturadas. Aumenta tu consumo de verduras y proteínas magras. Visita 🥗 Nutrición para ver recomendaciones de comidas que te ayudarán a mejorar.";
-            $color = "#f9a825";
-        } elseif ($imc_actual < 34.9) {
-            $icono = "🟠";
-            $estado_texto = "Obesidad grado I";
-            $recomendacion = "Es momento de hacer cambios significativos. Prioriza alimentos integrales, reduce los carbohidratos refinados y aumenta el consumo de fibra. En la sección de 🥗 Nutrición encontrarás un plan de alimentación recomendado para ti.";
-            $color = "#fb8c00";
+        if ($imc_actual !== null) {
+            // Determinar estado del IMC actual
+            if ($imc_actual < 18.5) {
+                $icono = "⚠️";
+                $estado_texto = "Bajo peso";
+                $color = "#ffa726";
+            } elseif ($imc_actual < 24.9) {
+                $icono = "✅";
+                $estado_texto = "Peso normal";
+                $color = "#7cb518";
+            } elseif ($imc_actual < 29.9) {
+                $icono = "🟡";
+                $estado_texto = "Sobrepeso";
+                $color = "#f9a825";
+            } elseif ($imc_actual < 34.9) {
+                $icono = "🟠";
+                $estado_texto = "Obesidad grado I";
+                $color = "#fb8c00";
+            } else {
+                $icono = "🔴";
+                $estado_texto = "Obesidad grado II/III";
+                $color = "#d32f2f";
+            }
+
+            // Mostrar el mensaje con mejor diseño
+            echo '<div style="display: flex; flex-direction: column; gap: 12px;">';
+            
+            // Fila 1: IMC y estado (destacado)
+            echo '<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">';
+            echo '<span style="font-size: 28px; font-weight: bold; color: ' . $color . ';">' . $imc_actual . '</span>';
+            echo '<span style="font-size: 18px; font-weight: bold; background: ' . $color . '20; padding: 4px 14px; border-radius: 20px; color: ' . $color . ';">' . $icono . ' ' . $estado_texto . '</span>';
+            echo '</div>';
+            
+            // Fila 2: Frase de estado (solo informativa, sin recomendaciones)
+            echo '<div style="font-size: 15px; line-height: 1.6; color: #44553a; padding: 12px 16px; background: #f5f7f0; border-radius: 12px; border-left: 4px solid ' . $color . ';">';
+            
+            // Mensaje según el estado
+            if ($imc_actual < 18.5) {
+                echo '💡 Tu IMC indica que estás por debajo del peso recomendado.';
+            } elseif ($imc_actual < 24.9) {
+                echo '💡 ¡Felicidades! Tu IMC está en el rango saludable.';
+            } elseif ($imc_actual < 29.9) {
+                echo '💡 Tu IMC indica que tienes sobrepeso.';
+            } elseif ($imc_actual < 34.9) {
+                echo '💡 Tu IMC indica obesidad grado I.';
+            } else {
+                echo '💡 Tu IMC indica obesidad grado II/III.';
+            }
+            echo '</div>';
+            
+            // Fila 3: Botón a Nutrición
+            echo '<div style="text-align: center; margin-top: 4px;">';
+            echo '<a href="nutrición_fitly.php" style="display: inline-block; background: linear-gradient(135deg, #5e5d02, #4a6b0c); color: white; padding: 8px 24px; border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 14px; transition: 0.3s;">';
+            echo '🥗 Ver recomendaciones en Nutrición';
+            echo '</a>';
+            echo '</div>';
+            
+            echo '</div>';
+
         } else {
-            $icono = "🔴";
-            $estado_texto = "Obesidad grado II/III";
-            $recomendacion = "Te recomendamos buscar asesoría profesional. Un nutricionista puede ayudarte a establecer un plan de alimentación adecuado. Mientras tanto, visita 🥗 Nutrición para ver recomendaciones de alimentos saludables.";
-            $color = "#d32f2f";
+            echo '<div style="text-align: center; padding: 10px;">';
+            echo '📝 Aún no has registrado tu IMC. Ve a la sección de Progreso para calcularlo.';
+            echo '</div>';
         }
-
-        // Mostrar el mensaje completo
-        echo "<div style='text-align: left;'>";
-        echo "<strong style='color: $color; font-size: 20px;'>$icono IMC: $imc_actual - $estado_texto</strong><br><br>";
-        echo "<span style='font-size: 15px;'>$recomendacion</span>";
-        echo "</div>";
-
-    } else {
-        echo "📝 Aún no has registrado tu IMC. Ve a la sección de Progreso para calcularlo.";
-    }
-    ?>
+        ?>
+    </div>
 </div>
+   
 
 <div class="card-progreso">
     <h3>📋 Historial</h3>
