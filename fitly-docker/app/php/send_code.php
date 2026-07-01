@@ -2,6 +2,8 @@
 require '../vendor/autoload.php';
 include 'conexion.php';
 
+/** @var mysqli $conn */
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
