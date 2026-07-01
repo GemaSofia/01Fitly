@@ -89,4 +89,5 @@ function mostrarHistorial(datos) {
             }]
         }
     });
+    
 }
