@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITLY - Calculadora IMC</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+    <header>
+        <h1>FITLY</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="imc.html">Calculadora IMC</a>
+        </nav>
+    </header>
+
+    <section class="imc-section">
+        <h2>Calculadora de IMC</h2>
+
+        <form id="formIMC">
+            <label>Peso (kg):</label>
+            <input type="number" id="peso" required>
+
+            <label>Estatura (cm):</label>
+            <input type="number" id="estatura" required>
+
+            <button type="submit" class="btn">Calcular</button>
+        </form>
+
+        <div id="resultado"></div>
+
+        <div class="benef-item">
+            <img src="img/benef1.png" class="benef-icon">
+            <h3>Salud accesible</h3>
+            <p>Información clara, sin términos complicados.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 FITLY - Salud y Bienestar</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
