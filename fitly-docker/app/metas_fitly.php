@@ -702,7 +702,7 @@ hr {
     <h2>FITLY</h2>
     <a href="dashboard.php">Inicio</a>
     <a href="progreso_fitly.php">Progreso</a>
-    <a href="nutrición_fitly.html">Nutrición</a>
+    <a href="nutrición_fitly.php">Nutrición</a>
     <a href="metas_fitly.php" class="active">Metas</a>
     <a href="logout.php">Cerrar sesión</a>
 </div>
