@@ -1,15 +1,25 @@
+
 <?php
-include 'conexion.php';
+session_start();
 
-$email = $_POST['email'];
-$code = $_POST['code'];
+if (!isset($_SESSION['codigo']) || !isset($_SESSION['correo_reset'])) {
+    die("La sesión expiró. Solicita un nuevo código.");
+}
 
-$sql = "SELECT * FROM usuarios WHERE email='$email' AND reset_code='$code'";
-$res = $conn->query($sql);
+$codigoIngresado = trim($_POST['codigo']);
 
-if ($res->num_rows > 0) {
-    echo "ok";
+if ($codigoIngresado == $_SESSION['codigo']) {
+
+    // Código correcto
+    header("Location: reset.html");
+    exit();
+
 } else {
-    echo "Código incorrecto";
+
+    echo "<script>
+        alert('Código incorrecto.');
+        window.location.href='forgot.html';
+    </script>";
+
 }
 ?>
